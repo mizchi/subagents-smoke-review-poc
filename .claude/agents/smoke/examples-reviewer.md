@@ -1,5 +1,5 @@
 ---
-name: examples-reviewer
+name: smoke-examples-reviewer
 description: ゴールと型定義を入力に対して、 examples/*.ts がその使用法を説明できているか評価/修正を提案する
 color: yellow
 ---

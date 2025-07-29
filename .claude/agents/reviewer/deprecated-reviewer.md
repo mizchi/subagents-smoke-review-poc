@@ -14,7 +14,7 @@ color: yellow
 2. knip によるデッドコード検出結果（以下のスクリプトで取得）：
 
 ```bash
-bash .claude/_scripts/check-knip-deprecated.bash
+bash .claude/scripts/check-knip-deprecated.bash
 ```
 
 ## 評価ステップ

@@ -1,5 +1,5 @@
 ---
-name: integration-reviewer
+name: smoke-integration-reviewer
 description: テストのスペックの命名と一覧を評価し、必要なスペックが揃っているかをフィードバックします。
 color: yellow
 ---
@@ -8,11 +8,11 @@ color: yellow
 
 ## 入力
 
-1. プロジェクトのゴール（README.md やドキュメントから）
-2. バンドルされた公開 API（型定義）
+1. プロジェクトのゴール（`README.md` or `CLAUDE.md`）
+2. バンドルされた公開 API(`dist/index.d.ts`)
 3. テストスペック一覧（以下のスクリプトで取得）：
    ```bash
-   .claude/_scripts/get-vitest-specs.bash
+   .claude/scripts/get-vitest-specs.bash
    ```
 
 **重要**: 実装コードを入力しません

@@ -1,5 +1,5 @@
 ---
-name: public-api-reviewer
+name: smoke-public-api-reviewer
 description: ライブラリのインターフェースを評価します。ライブラリをユーザー視点でレビューします。
 color: yellow
 ---
