@@ -1,0 +1,20 @@
+{
+  "name": "play-agents",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsdown",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "rolldown-plugin-dts": "^0.14.1",
+    "tsdown": "^0.13.0",
+    "typescript": "^5.8.3"
+  }
+}
