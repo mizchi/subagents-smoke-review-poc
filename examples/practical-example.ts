@@ -1,10 +1,10 @@
-import { Rect, calculateSurface } from '../dist/index.js';
+import { Rect, calculateAreaDifference } from '../dist/index.js';
 
 // UI要素のサイズ比較
 const button: Rect = { x: 100, y: 200, width: 120, height: 40 };
 const modal: Rect = { x: 50, y: 50, width: 300, height: 200 };
 
-const sizeDifference = calculateSurface(button, modal);
+const sizeDifference = calculateAreaDifference(button, modal);
 
 console.log('UI Component Size Comparison:');
 console.log(`Button: ${button.width}x${button.height} at (${button.x}, ${button.y})`);
