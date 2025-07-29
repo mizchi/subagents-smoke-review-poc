@@ -1,11 +1,5 @@
 # Rectangle Calculation Library
 
-## Installation
-
-```bash
-npm install play-agents
-```
-
 ## API Reference
 
 ### Types

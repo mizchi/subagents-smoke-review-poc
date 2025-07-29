@@ -22,41 +22,29 @@ const layouts = {
   ]
 };
 
-// 各レイアウトのコンテンツエリアを比較
+// 各レイアウトのメインコンテンツエリアを比較
 console.log('レイアウト間のコンテンツエリア面積差:');
-console.log('=====================================');
 
-const mobileMainContent = layouts.mobile[1];
-const tabletMainContent = layouts.tablet[2];
-const desktopMainContent = layouts.desktop[2];
+const mobileMain = layouts.mobile[1];
+const tabletMain = layouts.tablet[2];
+const desktopMain = layouts.desktop[2];
 
-console.log(`モバイル vs タブレット: ${calculateAreaDifference(mobileMainContent, tabletMainContent).toLocaleString()} px²`);
-console.log(`タブレット vs デスクトップ: ${calculateAreaDifference(tabletMainContent, desktopMainContent).toLocaleString()} px²`);
-console.log(`モバイル vs デスクトップ: ${calculateAreaDifference(mobileMainContent, desktopMainContent).toLocaleString()} px²`);
+console.log(`モバイル vs タブレット: ${calculateAreaDifference(mobileMain, tabletMain).toLocaleString()} px²`);
+console.log(`タブレット vs デスクトップ: ${calculateAreaDifference(tabletMain, desktopMain).toLocaleString()} px²`);
 
-// 同じデバイス内での要素の類似度分析
+// デスクトップレイアウトの要素類似度分析
 console.log('\nデスクトップレイアウトの要素類似度:');
-console.log('===================================');
 
-const desktopSimilarities = calculatePairwiseSimilarities(layouts.desktop);
+const similarities = calculatePairwiseSimilarities(layouts.desktop);
 const elementNames = ['ヘッダー', '左サイドバー', 'メインコンテンツ', '右サイドバー'];
 
-desktopSimilarities.forEach(result => {
-  const elem1 = elementNames[result.firstIndex];
-  const elem2 = elementNames[result.secondIndex];
-  
-  if (result.similarity > 0.3) {
-    console.log(`${elem1} と ${elem2}: ${(result.similarity * 100).toFixed(1)}% の類似度`);
-  }
-});
+// 対称的な要素を検出（類似度60%以上）
+const symmetricPairs = similarities
+  .filter(s => s.similarity >= 0.6)
+  .map(s => `${elementNames[s.firstIndex]} と ${elementNames[s.secondIndex]}`);
 
-// 対称性のあるレイアウト要素を検出
-console.log('\n対称的な要素（類似度60%以上）:');
-const symmetricElements = desktopSimilarities.filter(s => s.similarity >= 0.6);
-if (symmetricElements.length > 0) {
-  symmetricElements.forEach(result => {
-    console.log(`- ${elementNames[result.rect1]} と ${elementNames[result.rect2]}`);
-  });
+if (symmetricPairs.length > 0) {
+  console.log('対称的な要素:', symmetricPairs.join(', '));
 } else {
-  console.log('- 対称的な要素は見つかりませんでした');
+  console.log('対称的な要素は見つかりませんでした');
 }

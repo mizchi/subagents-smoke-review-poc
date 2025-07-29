@@ -1,12 +1,12 @@
 import { Rect, calculatePairwiseSimilarities } from '../dist/index.js';
 
-// 複数のUI要素の配置を定義
+// 様々なサイズのUI要素を定義（類似度の違いを示す）
 const uiElements: Rect[] = [
-  { x: 0, y: 0, width: 100, height: 50 },      // ヘッダー
-  { x: 0, y: 60, width: 100, height: 200 },    // サイドバー
-  { x: 110, y: 60, width: 300, height: 200 },  // メインコンテンツ
-  { x: 0, y: 270, width: 410, height: 30 },    // フッター
-  { x: 10, y: 70, width: 80, height: 180 }     // サイドバーと重なる要素
+  { x: 0, y: 0, width: 100, height: 100 },     // 正方形
+  { x: 200, y: 0, width: 100, height: 100 },   // 同じ正方形
+  { x: 0, y: 200, width: 100, height: 50 },    // 横長（面積は半分）
+  { x: 200, y: 200, width: 50, height: 100 },  // 縦長（面積は半分）
+  { x: 0, y: 400, width: 200, height: 200 }    // 大きな正方形（面積は4倍）
 ];
 
 // すべての組み合わせの類似度を計算
@@ -15,19 +15,20 @@ const similarities = calculatePairwiseSimilarities(uiElements);
 console.log('UI要素の類似度分析:');
 console.log('========================');
 
-// 類似度が高い順に表示
-similarities.forEach((result, index) => {
-  const elementNames = ['ヘッダー', 'サイドバー', 'メインコンテンツ', 'フッター', '重なり要素'];
-  const elem1 = elementNames[result.firstIndex];
-  const elem2 = elementNames[result.secondIndex];
-  
-  console.log(`${index + 1}. ${elem1} と ${elem2}: 類似度 ${(result.similarity * 100).toFixed(1)}%`);
+const elementNames = ['正方形1', '正方形2', '横長', '縦長', '大正方形'];
+
+// 類似度でグループ化して表示
+console.log('\n完全一致（類似度 100%）:');
+similarities.filter(s => s.similarity === 1.0).forEach(result => {
+  console.log(`- ${elementNames[result.firstIndex]} と ${elementNames[result.secondIndex]}`);
 });
 
-// 類似度が高い（50%以上）ペアを抽出
-console.log('\n類似度が高い要素ペア（50%以上）:');
-const highSimilarity = similarities.filter(s => s.similarity >= 0.5);
-highSimilarity.forEach(result => {
-  const elementNames = ['ヘッダー', 'サイドバー', 'メインコンテンツ', 'フッター', '重なり要素'];
-  console.log(`- ${elementNames[result.firstIndex]} と ${elementNames[result.secondIndex]}`);
+console.log('\n中程度の類似（類似度 25-75%）:');
+similarities.filter(s => s.similarity > 0.25 && s.similarity < 0.75).forEach(result => {
+  console.log(`- ${elementNames[result.firstIndex]} と ${elementNames[result.secondIndex]}: ${(result.similarity * 100).toFixed(0)}%`);
+});
+
+console.log('\n低い類似（類似度 25%以下）:');
+similarities.filter(s => s.similarity <= 0.25).forEach(result => {
+  console.log(`- ${elementNames[result.firstIndex]} と ${elementNames[result.secondIndex]}: ${(result.similarity * 100).toFixed(0)}%`);
 });
