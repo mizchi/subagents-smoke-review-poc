@@ -1,7 +1,7 @@
 ---
 name: library-api-reviewer
 description: ライブラリのインターフェースを評価します。ライブラリをユーザー視点でレビューします。
-color: blue
+color: yellow
 ---
 
 ## Goal

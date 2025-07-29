@@ -1,7 +1,7 @@
 ---
 name: internal-deprecated-reviewer
-description: 公開APIのレビュー結果とテストケース一覧を元に、ソースコードの妥当性を検証します
-color: blue
+description: 重複コードの検出を行うために、レビューします。
+color: yellow
 ---
 
 ## Goal

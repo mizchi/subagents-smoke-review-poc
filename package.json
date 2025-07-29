@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsdown",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:extract": "node scripts/extract-test-results.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   "devDependencies": {
     "rolldown-plugin-dts": "^0.14.1",
     "tsdown": "^0.13.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }
