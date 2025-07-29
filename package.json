@@ -5,10 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "ai:prereview": ".claude/scripts/verify-reviewable.mjs",
+    "ai:prereview": ".claude/scripts/check-prereview.mjs",
     "build": "tsdown",
     "test": "vitest run",
     "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
+    "@vitest/coverage-v8": "^3.2.4",
     "knip": "^5.62.0",
     "rolldown-plugin-dts": "^0.14.1",
     "tsdown": "^0.13.0",
