@@ -1,5 +1,5 @@
 ---
-name: library-api-reviewer
+name: public-api-reviewer
 description: ライブラリのインターフェースを評価します。ライブラリをユーザー視点でレビューします。
 color: yellow
 ---
