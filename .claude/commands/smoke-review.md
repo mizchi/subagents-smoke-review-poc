@@ -4,7 +4,7 @@
 
 ## Steps
 
-- Run `.claude/scripts/verify-reviewable.mjs` to check project structure
+- Run `.claude/scripts/check-prereview.mjs` to check project structure
 - Parralel with Sub Agents
   - Review `dist/index.d.ts` with smoke-pubilc-api-reviewer
   - Review `examples/*.ts` with smoke-examples-reviewer
